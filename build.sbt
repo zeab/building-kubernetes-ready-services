@@ -62,7 +62,7 @@ lazy val k8readyservice = (project in file(k8ReadyServiceKey))
 
 lazy val cassandraservice = (project in file(cassandraServiceKey))
   .settings(cassandraServiceSettings: _*)
-  .settings(libraryDependencies ++= commonDependencies)
+  .settings(libraryDependencies ++= cassandraServiceDependencies)
   .settings(cassandraServiceDockerSettings)
   .enablePlugins(AshScriptPlugin)
   .enablePlugins(AssemblyPlugin)

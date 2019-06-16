@@ -33,11 +33,16 @@ object Dependencies {
     val scalaExtras                 = "com.github.zeab" %% "scalaextras" % V.scalaExtras
   }
 
-
   val standardServiceDependencies: Seq[ModuleID] = Seq(
     D.akkaStream,
     D.akkaHttpTools,
     D.scalaExtras
+  )
+
+  val cassandraServiceDependencies: Seq[ModuleID] = Seq(
+    D.akkaStream,
+    D.scalaExtras,
+    D.datastax
   )
 
   val commonDependencies: Seq[ModuleID] = Seq()

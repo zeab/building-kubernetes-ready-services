@@ -15,6 +15,8 @@ import io.circe.generic.auto._
 
 object Routes extends DirectiveExtensions with Marshallers with Unmarshallers {
 
+  //TODO Add more examples
+
   def all: Route = logRoute{ ingressRoute ~ otherRoute }
 
   //Routes dealing with basic ingress checks
