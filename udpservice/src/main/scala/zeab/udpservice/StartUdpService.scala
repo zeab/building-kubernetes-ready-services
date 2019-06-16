@@ -1,3 +1,3 @@
 package zeab.udpservice
 
-case class StartUdpService(host:String, port:String)
+case class StartUdpService(host: String, port: String)

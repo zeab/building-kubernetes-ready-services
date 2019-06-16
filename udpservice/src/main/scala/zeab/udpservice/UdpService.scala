@@ -5,10 +5,9 @@ import zeab.scalaextras.logging.Logging
 //Java
 import java.net.InetSocketAddress
 //Akka
-import akka.actor.{Actor, ActorRef, ActorSystem}
+import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.event.{Logging, LoggingAdapter}
 import akka.io.{IO, Udp}
-import akka.actor.Props
 import com.typesafe.config.ConfigFactory
 
 object UdpService extends App with Logging {
@@ -24,7 +23,7 @@ class UdpService extends Actor {
 
   val actorLog: LoggingAdapter = Logging(context.system, this)
 
-  implicit val actorSystem:ActorSystem = context.system
+  implicit val actorSystem: ActorSystem = context.system
 
   def receive: Receive = disconnected
 
