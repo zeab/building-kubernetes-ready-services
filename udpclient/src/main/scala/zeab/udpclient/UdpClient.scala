@@ -1,34 +1,30 @@
 package zeab.udpclient
 
 //Imports
-
-import java.util.UUID
-
-import akka.actor.Props
-import com.typesafe.config.ConfigFactory
 import zeab.scalaextras.logging.Logging
-
-import scala.concurrent.ExecutionContext
 //Java
+import java.util.UUID
 import java.net.InetSocketAddress
 //Akka
-import akka.actor.{Actor, ActorRef, ActorSystem}
+import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.event.{Logging, LoggingAdapter}
 import akka.io.{IO, UdpConnected}
 import akka.util.ByteString
-
+import com.typesafe.config.ConfigFactory
+//Scala
 import scala.concurrent.duration._
+import scala.concurrent.ExecutionContext
 
 object UdpClient extends App with Logging {
 
-  val host: String = "192.168.1.1"
-  val port: String = "8125"
+  val udpHost: String = getEnvVar[String]("UDP_HOST", "localhost")
+  val udpPort: String = getEnvVar[String]("UDP_PORT", "8125")
 
   //Akka
   implicit val system: ActorSystem = ActorSystem("UdpClient", ConfigFactory.load())
   implicit val ec: ExecutionContext = system.dispatcher
 
-  val udpClient: ActorRef = system.actorOf(Props(classOf[UdpClient], host, port))
+  val udpClient: ActorRef = system.actorOf(Props(classOf[UdpClient], udpHost, udpPort))
 
   system.scheduler.schedule(0.second, 1.second) {
     udpClient ! SendUdpDatagram(s"Ahoy! ${UUID.randomUUID()}")

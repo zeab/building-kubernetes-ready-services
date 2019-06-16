@@ -12,10 +12,13 @@ import com.typesafe.config.ConfigFactory
 
 object UdpService extends App with Logging {
 
+  val udpHost: String = getEnvVar[String]("UDP_HOST", "0.0.0.0")
+  val udpPort: String = getEnvVar[String]("UDP_PORT", "8125")
+
   //Akka
   implicit val system: ActorSystem = ActorSystem("UdpService", ConfigFactory.load())
 
-  system.actorOf(Props(classOf[UdpService])) ! StartUdpService("localhost", "8125")
+  system.actorOf(Props(classOf[UdpService])) ! StartUdpService(udpHost, udpPort)
 
 }
 
