@@ -1,8 +1,14 @@
 //Imports
+import sbt.Keys.libraryDependencies
 import sbt._
 
 object Dependencies {
 
+  //Add the library's to this list that need to be excluded. Below is excluding certain log4j lib's
+  val removeDependencies: Seq[Def.Setting[_]] = Seq(
+    libraryDependencies ~= { _.map(_.exclude("org.slf4j", "slf4j-log4j12")) }
+  )
+  
   //List of Versions
   val V = new {
     val akka                        = "2.5.22"
@@ -45,6 +51,21 @@ object Dependencies {
     D.datastax
   )
 
+  val kafkaServiceDependencies: Seq[ModuleID] = Seq(
+    D.akkaStream,
+    D.scalaExtras,
+    D.akkaKafka
+  )
+  
+  val k8ReadyServiceDependencies: Seq[ModuleID] = Seq(
+    D.akkaStream,
+    D.akkaHttpTools,
+    D.scalaExtras,
+    D.datastax,
+    D.akkaKafka,
+    D.zooKeeper
+  )
+  
   val commonDependencies: Seq[ModuleID] = Seq()
 
 }

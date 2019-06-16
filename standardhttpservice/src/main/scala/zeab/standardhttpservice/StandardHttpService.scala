@@ -38,8 +38,8 @@ object StandardHttpService extends App with Logging {
     httpBinding.onComplete{ _ =>
       log.info("Http Server is now offline")
       system.terminate()
-      Await.result(system.whenTerminated, 30.seconds)
       log.info("Terminated... Exiting")
+      Await.result(system.whenTerminated, 30.seconds)
     }
   }
 
