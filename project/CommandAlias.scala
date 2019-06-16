@@ -10,10 +10,11 @@ object CommandAlias {
 
   //List all Docker Alias here
   val allDockerAlias: Seq[Def.Setting[_]] =
-    dockerCommands(basicServiceKey) ++
-      dockerCommands("bs", basicServiceKey) ++
-      dockerCommands(standardServiceKey) ++
-      dockerCommands("ss", standardServiceKey)
+    dockerCommands(basicHttpServiceKey) ++
+      dockerCommands("bhs", basicHttpServiceKey) ++
+      dockerCommands(standardHttpServiceKey) ++
+      dockerCommands("shs", standardHttpServiceKey) ++
+      dockerCommands("travisci", basicHttpServiceKey, standardHttpServiceKey)
 
   //List all Assembly Alias here
   val allAssemblyAlias: Seq[Def.Setting[_]] = Seq.empty

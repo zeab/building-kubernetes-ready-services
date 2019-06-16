@@ -1,9 +1,13 @@
 
 object ModuleNames {
 
-  //Web Services
-  val basicServiceKey: String = "basicservice"
-  val standardServiceKey: String = "standardservice"
+  //Http Services
+  val udpServiceKey: String = "udpservice"
+  val udpClientKey: String = "udpclient"
+
+  //Http Services
+  val basicHttpServiceKey: String = "basichttpservice"
+  val standardHttpServiceKey: String = "standardhttpservice"
 
   //Kafka
   val kafkaProducerServiceKey: String = "kafkaproducerservice"

@@ -1,4 +1,4 @@
-package zeab.basicservice.webservice
+package zeab.basichttpservice.httpservice
 
 //Imports
 import java.util.UUID

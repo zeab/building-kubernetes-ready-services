@@ -5,9 +5,13 @@ import Common.buildTime
 //Versions for all the modules
 object Versions {
 
-  //Web Services
-  val basicServiceVersion: String = s"0.0.$buildTime"
-  val standardServiceVersion: String = s"0.0.$buildTime"
+  //Udp Services
+  val udpServiceVersion: String = s"0.0.$buildTime"
+  val udpClientVersion: String = s"0.0.$buildTime"
+  
+  //Http Services
+  val basicHttpServiceVersion: String = s"0.0.$buildTime"
+  val standardHttpServiceVersion: String = s"0.0.$buildTime"
 
   //Kafka
   val kafkaProducerServiceVersion: String = s"0.0.$buildTime"

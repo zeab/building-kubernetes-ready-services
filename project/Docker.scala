@@ -16,27 +16,31 @@ object Docker {
     val openjdk8Slim: String = "openjdk:8-jdk-slim"
   }
 
-  //Kafka
-  val kafkaProducerServiceKey: String = "kafkaproducerservice"
-  val kafkaConsumerServiceKey: String = "kafkaconsumerservice"
-
-  //Cassandra
-  val cassandraServiceKey: String = "cassandraservice"
-
-  //Putting it all together into a single module
-  val k8ReadyServiceKey: String = "k8readyservice"
-  
-  val basicServiceDockerSettings: Seq[Def.Setting[_]] = Seq(
+  val udpServiceDockerSettings: Seq[Def.Setting[_]] = Seq(
     dockerBaseImage := I.openjdk8Alpine,
     dockerRepository := repo,
-    dockerLabels := mapDockerLabels(basicServiceKey, basicServiceVersion, buildTime),
+    dockerLabels := mapDockerLabels(udpServiceKey, udpServiceVersion, buildTime),
     dockerUpdateLatest := true
   )
 
-  val standardServiceDockerSettings: Seq[Def.Setting[_]] = Seq(
+  val udpClientDockerSettings: Seq[Def.Setting[_]] = Seq(
     dockerBaseImage := I.openjdk8Alpine,
     dockerRepository := repo,
-    dockerLabels := mapDockerLabels(standardServiceKey, standardServiceVersion, buildTime),
+    dockerLabels := mapDockerLabels(udpClientKey, udpClientVersion, buildTime),
+    dockerUpdateLatest := true
+  )
+
+  val basicHttpServiceDockerSettings: Seq[Def.Setting[_]] = Seq(
+    dockerBaseImage := I.openjdk8Alpine,
+    dockerRepository := repo,
+    dockerLabels := mapDockerLabels(basicHttpServiceKey, basicHttpServiceVersion, buildTime),
+    dockerUpdateLatest := true
+  )
+
+  val standardHttpServiceDockerSettings: Seq[Def.Setting[_]] = Seq(
+    dockerBaseImage := I.openjdk8Alpine,
+    dockerRepository := repo,
+    dockerLabels := mapDockerLabels(standardHttpServiceKey, standardHttpServiceVersion, buildTime),
     dockerUpdateLatest := true
   )
 
@@ -60,5 +64,12 @@ object Docker {
     dockerLabels := mapDockerLabels(k8ReadyServiceKey, k8ReadyServiceVersion, buildTime),
     dockerUpdateLatest := true
   )
-  
+
+  val cassandraServiceDockerSettings: Seq[Def.Setting[_]] = Seq(
+    dockerBaseImage := I.openjdk8Alpine,
+    dockerRepository := repo,
+    dockerLabels := mapDockerLabels(cassandraServiceKey, cassandraServiceVersion, buildTime),
+    dockerUpdateLatest := true
+  )
+
 }
