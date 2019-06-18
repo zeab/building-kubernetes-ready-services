@@ -3,7 +3,7 @@ package zeab.standardhttpservice.httpservice
 //Imports
 import zeab.akkahttptools.directives.DirectiveExtensions
 import zeab.akkahttptools.serialization.{Marshallers, Unmarshallers}
-import zeab.standardhttpservice.httpservice.models.{PostPerson200ResponseBody, PostPersonRequestBody}
+import zeab.standardhttpservice.httpservice.models.{GetPerson200ResponseBody, PostPerson200ResponseBody, PostPersonRequestBody}
 //Akka
 import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.server.Directives._
@@ -38,6 +38,9 @@ object Routes extends DirectiveExtensions with Marshallers with Unmarshallers {
 
   def otherRoute: Route =
     pathPrefix("other"){
+      get{
+        complete(OK, GetPerson200ResponseBody("bert", 8, UUID.randomUUID.toString))
+      } ~
       post{
         decodeRequest {
           entity(as[PostPersonRequestBody]) { req =>
