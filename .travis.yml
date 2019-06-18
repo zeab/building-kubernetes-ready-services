@@ -12,7 +12,7 @@ branches:
 notifications:
   email:
     recipients:
-      - youremail@abc.com
+      - pyrosrppltoo@gmail.com
 
 jdk:
   - openjdk8
