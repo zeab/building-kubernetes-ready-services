@@ -23,7 +23,7 @@ object CommandAlias {
       dockerCommands(k8ReadyServiceKey) ++
       dockerCommands("k8rs", k8ReadyServiceKey) ++
       dockerCommands("travisci",
-        basicHttpServiceKey, standardHttpServiceKey, udpServiceKey, udpClientKey, cassandraServiceKey, k8ReadyServiceKey)
+        basicHttpServiceKey, standardHttpServiceKey)
 
   //List all Assembly Alias here
   val allAssemblyAlias: Seq[Def.Setting[_]] = Seq.empty
