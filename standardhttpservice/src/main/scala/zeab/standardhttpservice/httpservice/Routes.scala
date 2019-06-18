@@ -11,9 +11,9 @@ import akka.http.scaladsl.server.Route
 //Java
 import java.util.UUID
 //Circe
-import io.circe.generic.auto._
+import io.circe.generic.AutoDerivation
 
-object Routes extends DirectiveExtensions with Marshallers with Unmarshallers {
+object Routes extends DirectiveExtensions with Marshallers with Unmarshallers with AutoDerivation {
 
   //TODO Add more examples
 
