@@ -16,7 +16,7 @@ object Dependencies {
     val scalaTest                   = "3.0.5"
     val datastax                    = "3.4.0"
     val zooKeeper                   = "3.4.14"
-    val scalaExtras                 = "1.1.0"
+    val scalaExtras                 = "1.1.+"
     val akkaHttpTools               = "1.0.+"
   }
 
